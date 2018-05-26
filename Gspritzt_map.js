@@ -4,12 +4,17 @@
 
 */
 
-// eine neue Leaflet Karte definieren
+//  Leaflet Map with fullscreen
 let myMap = L.map("map", {
-    fullscreenControl: true,});
+    fullscreenControl: true,
+    zoom: 9,
+    center: new L.LatLng(47.267,11.383),  // like -> myMap.setView([47.267,11.383], 10);
+  });
 
-let GlacierfeatureGroup = L.featureGroup();
+let Glacierpts = L.markerClusterGroup();
+let Glacierpolygon = L.featureGroup();
 
+//make selectable maps and overlays
 let myLayers = {
   osm : L.tileLayer(
     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -20,7 +25,7 @@ let myLayers = {
   otp : L.tileLayer(
     "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
       subdomains : ["a", "b", "c"],
-      attribution : "Datenquelle: <a href = 'https://www.openstreetmap.org/' > © OpenStreetMap</a> Mitwirkende, SRTM | Kartendarstellung: © <a href = 'https://opentopomap.org/' > © OpenTopoMap</a> (<a href = 'https://creativecommons.org/licenses/by-sa/3.0/' > CC-BY-SA</a>)"
+      attribution : "Datenquelle: <a href = 'https://www.openstreetmap.org/' > © OpenStreetMap</a> Mitwirkende, SRTM | Kartendarstellung: <a href = 'https://opentopomap.org/' > © OpenTopoMap</a> (<a href = 'https://creativecommons.org/licenses/by-sa/3.0/' > CC-BY-SA</a>)"
     }
   ),
   geolandbasemap : L.tileLayer(
@@ -64,14 +69,11 @@ let myLayers = {
   ),
 };
 
-
-
-
-
 const gdi_orthoGrp = L.layerGroup([myLayers.gdi_ortho, myLayers.gdi_nomenklatur, myLayers.ortho_suedtirol])
 const suedtirol_orthoGrp = L.layerGroup([myLayers.ortho_suedtirol])
 
 myMap.addLayer(myLayers.otp);
+
 // Maßstab metrisch ohne inch
 //Maßstabsleiste
 let myScale = L.control.scale({
@@ -83,6 +85,50 @@ let myScale = L.control.scale({
 
 myScale.addTo(myMap);
 
+//===================test(a)==============
+const geojson = L.geoJSON(gi3_tirol_2006_points, {
+  style: function(feature) {
+    return {color: "#ff0000"};
+  },
+  pointToLayer: function(geoJsonPoint, latlng) {
+    return L.marker(latlng, {icon: L.icon({
+      iconUrl: 'icons/pinother.png',
+      iconAnchor : [16,37],
+      popupAnchor : [0,-37],
+    })
+    });
+  }
+}).addTo(Glacierpts);
+Glacierpts.addLayer(geojson);
+myMap.fitBounds(Glacierpts.getBounds());
+Glacierpts.bindPopup(function(layer) {
+  const props = layer.feature.properties;
+  const Area = (props.Shape_Area/100000).toFixed(2)
+  const popupText = `<h1>${props.GLETSCHERN}</h1>
+  <p> <p> Fläche 2006:  ${Area} km²</p>`;
+  return popupText;
+});
+
+
+let geojson2 = L.geoJSON(gi3_tirol_2006_polygon).addTo(Glacierpolygon)
+let geojson2_layers = geojson2.getLayers();
+
+
+let GlacierfeatureGroup =  L.layerGroup([Glacierpts,Glacierpolygon], {
+  attribution : "Gletscherdaten: <a href ='https://doi.pangaea.de/10.1594/PANGAEA.806960'> Abermann et al. (2012) </a> (<a href ='https://creativecommons.org/licenses/by/3.0/'> CC BY 3.0 </a>)",
+});
+
+myMap.addLayer(Glacierpts);
+myMap.addLayer(GlacierfeatureGroup);
+
+
+//add leaflet hash & search
+const hash = new L.Hash(myMap);
+myMap.addControl( new L.Control.Search({
+  layer: Glacierpts,
+  initial: false,
+  propertyName: 'GLETSCHERN',    
+}));
 
 // Baselayer control
 let myMapControl  = L.control.layers({
@@ -93,21 +139,21 @@ let myMapControl  = L.control.layers({
   //"Autonome Brovinz Bozen Orthophoto" :suedtirol_orthoGrp,
 }, {
   //overlay // Overlay controls zum unabhängigem Ein-/Ausschalten der Route und Marker hinzufügen
+  "Gletscher Tirol Marker" : Glacierpts,
+  "Gletscher Tirol Fläche" : Glacierpolygon,
   "Orthophoto Tiol & Südtirol" : gdi_orthoGrp,
-  "Gletscher Tirol" : GlacierfeatureGroup,
   "Gletscher Südtirol" : myLayers.gletscherinv_suedtirol,
 }, { //map control ausgeklappt lassen
   collapsed:false} );
 
 myMap.addControl(myMapControl);
 
+//test logs.
+/*
+console.log(geojson.getLayers());
+console.log(geojson_layers);
+console.log(geojson_layers.length);
+console.log(geojson.getLayerId(geojson._layers));
 
-
-let geojson = L.geoJSON(tirol_glacierinv).addTo(GlacierfeatureGroup);
-
-
-//something's not right here o.=
 console.log(geojson._layers[50].feature.properties.GLETSCHERN);
-
-
-myMap.setView([47.267,11.383], 9);
+*/
