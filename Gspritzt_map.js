@@ -13,6 +13,8 @@ let myMap = L.map("map", {
 
 let Glacierpts = L.markerClusterGroup();
 let Glacierpolygon = L.featureGroup();
+let Glacierpts_SI = L.markerClusterGroup();
+let Glacierpolygon_SI = L.featureGroup();
 
 //make selectable maps and overlays
 let myLayers = {
@@ -109,7 +111,6 @@ Glacierpts.bindPopup(function(layer) {
   return popupText;
 });
 
-
 let geojson2 = L.geoJSON(gi3_tirol_2006_polygon).addTo(Glacierpolygon)
 let geojson2_layers = geojson2.getLayers();
 
@@ -121,8 +122,47 @@ let GlacierfeatureGroup =  L.layerGroup([Glacierpts,Glacierpolygon], {
 myMap.addLayer(Glacierpts);
 myMap.addLayer(GlacierfeatureGroup);
 
+//=================Suedtirol Test===========================================
+/*
+const geojson = L.geoJSON(gi_2006_st_points, { 
+  style: function(feature) {
+    return {color: "#ff0000"};
+  },
+  pointToLayer: function(geoJsonPoint, latlng) {
+    return L.marker(latlng, {icon: L.icon({
+      iconUrl: 'icons/pinother.png',
+      iconAnchor : [16,37],
+      popupAnchor : [0,-37],
+    })
+    });
+  }
+}).addTo(Glacierpts_SI);
+Glacierpts_SI.addLayer(geojson);
+myMap.fitBounds(Glacierpts_SI.getBounds());
+Glacierpts_SI.bindPopup(function(layer) {
+  const props = layer.feature.properties;
+  const Area = (props.Shape_Area/100000).toFixed(2)
+  const popupText = `<h1>${props.GLETSCHERN}</h1>
+  <p> <p> Fläche 2006:  ${Area} km²</p>`;
+  return popupText;
+} 
+);
 
-//add leaflet hash & search
+let geojson3 = L.geoJSON(gi_2006_st_polygon).addTo(Glacierpolygon_SI)
+
+let geojson3_layers = geojson3.getLayers();
+
+
+let GlacierfeatureGroup_SI =  L.layerGroup([Glacierpts_SI,Glacierpolygon_SI], {
+  attribution : "Gletscherdaten: <a href ='https://doi.pangaea.de/10.1594/PANGAEA.806960'> Abermann et al. (2012) </a> (<a href ='https://creativecommons.org/licenses/by/3.0/'> CC BY 3.0 </a>)",
+});
+
+myMap.addLayer(Glacierpts_SI);
+myMap.addLayer(GlacierfeatureGroup_SI);
+*/
+//=======================================================================
+
+
 const hash = new L.Hash(myMap);
 myMap.addControl( new L.Control.Search({
   layer: Glacierpts,
@@ -141,6 +181,8 @@ let myMapControl  = L.control.layers({
   //overlay // Overlay controls zum unabhängigem Ein-/Ausschalten der Route und Marker hinzufügen
   "Gletscher Tirol Marker" : Glacierpts,
   "Gletscher Tirol Fläche" : Glacierpolygon,
+  "Gletscher Südtirol Marker" : Glacierpts_SI,
+  "Gletscher Südtirol Fläche" : Glacierpolygon_SI,
   "Orthophoto Tiol & Südtirol" : gdi_orthoGrp,
   "Gletscher Südtirol" : myLayers.gletscherinv_suedtirol,
 }, { //map control ausgeklappt lassen
