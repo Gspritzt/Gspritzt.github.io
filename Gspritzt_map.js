@@ -1,5 +1,5 @@
 /*
-    Testmap Gletscher Tirol
+    Übersichtskarte Gletscher Tirol
     -------------------------------------------------------------------
 
 */
@@ -13,8 +13,8 @@ let myMap = L.map("map", {
 
 let Glacierpts = L.markerClusterGroup();
 let Glacierpolygon = L.featureGroup();
-let Glacierpts_SI = L.markerClusterGroup();
-let Glacierpolygon_SI = L.featureGroup();
+let Glacierpts_st = L.markerClusterGroup();
+let Glacierpolygon_st = L.featureGroup();
 
 //make selectable maps and overlays
 let myLayers = {
@@ -53,14 +53,6 @@ let myLayers = {
       format: 'image/png',
     }
   ),
-  gletscherinv_suedtirol: L.tileLayer.wms(
-    "http://geoservices.buergernetz.bz.it/geoserver/p_bz-hydrology/ows?", {
-      layers: "GlacierInventory",
-      attribution : "Datenquelle: <a href ='http://dati.retecivica.bz.it/de/info'> Autonome Provinz Bozen </a>  (<a href ='https://creativecommons.org/publicdomain/zero/1.0/deed.de'> CC0</a>)",
-      transparent: true,
-      format: 'image/png',
-    }
-  ),
   ortho_suedtirol: L.tileLayer.wms(
     "http://geoservices.buergernetz.bz.it/geoserver/ows?", {
       layers: "Orthophoto_2011",
@@ -87,7 +79,9 @@ let myScale = L.control.scale({
 
 myScale.addTo(myMap);
 
-//===================test(a)==============
+
+// TODO: Please credit as follows: Maps Icons Collection https://mapicons.mapsmarker.com
+//===================Nordtirol==============
 const geojson = L.geoJSON(gi3_tirol_2006_points, {
   style: function(feature) {
     return {color: "#ff0000"};
@@ -107,7 +101,7 @@ Glacierpts.bindPopup(function(layer) {
   const props = layer.feature.properties;
   const Area = (props.Shape_Area/100000).toFixed(2)
   const popupText = `<h1>${props.GLETSCHERN}</h1>
-  <p> <p> Fläche 2006:  ${Area} km²</p>`;
+  <p> Fläche 2006:  ${Area} km²</p>`;
   return popupText;
 });
 
@@ -122,44 +116,46 @@ let GlacierfeatureGroup =  L.layerGroup([Glacierpts,Glacierpolygon], {
 myMap.addLayer(Glacierpts);
 myMap.addLayer(GlacierfeatureGroup);
 
+
+
 //=================Suedtirol Test===========================================
-/*
-const geojson = L.geoJSON(gi_2006_st_points, { 
+const geojson_st = L.geoJSON(gi_2006_st_points, {
   style: function(feature) {
-    return {color: "#ff0000"};
+    return {color: "#7fcdbb"};
   },
   pointToLayer: function(geoJsonPoint, latlng) {
     return L.marker(latlng, {icon: L.icon({
-      iconUrl: 'icons/pinother.png',
+      iconUrl: 'icons/pinother_blue.png',
       iconAnchor : [16,37],
       popupAnchor : [0,-37],
     })
     });
   }
-}).addTo(Glacierpts_SI);
-Glacierpts_SI.addLayer(geojson);
-myMap.fitBounds(Glacierpts_SI.getBounds());
-Glacierpts_SI.bindPopup(function(layer) {
+}).addTo(Glacierpts_st);
+Glacierpts_st.addLayer(geojson_st);
+//myMap.fitBounds(Glacierpts_st.getBounds());
+Glacierpts_st.bindPopup(function(layer) {
   const props = layer.feature.properties;
-  const Area = (props.Shape_Area/100000).toFixed(2)
-  const popupText = `<h1>${props.GLETSCHERN}</h1>
-  <p> <p> Fläche 2006:  ${Area} km²</p>`;
+  const Area2006 = (props.GLAC_AREA_06).toFixed(3)
+  const Area1997 = (props.GLAC_AREA_97).toFixed(3)
+  const popupText = `<h1>${props.GLAC_GLACIER_NAME_DE}</h1>
+   <p> Fläche 1997:  ${Area1997} km²</p> <p> Fläche 2006:  ${Area2006} km²</p>`;
   return popupText;
-} 
+}
 );
 
-let geojson3 = L.geoJSON(gi_2006_st_polygon).addTo(Glacierpolygon_SI)
+let geojson_st_2 = L.geoJSON(gi_2006_st_polygon).addTo(Glacierpolygon_st)
 
-let geojson3_layers = geojson3.getLayers();
+let geojson_st_2_layers = geojson_st_2.getLayers();
 
 
-let GlacierfeatureGroup_SI =  L.layerGroup([Glacierpts_SI,Glacierpolygon_SI], {
-  attribution : "Gletscherdaten: <a href ='https://doi.pangaea.de/10.1594/PANGAEA.806960'> Abermann et al. (2012) </a> (<a href ='https://creativecommons.org/licenses/by/3.0/'> CC BY 3.0 </a>)",
+let GlacierfeatureGroup_st =  L.layerGroup([Glacierpts_st,Glacierpolygon_st], {
+  attribution : "Gletscherdaten: <a href ='http://dati.retecivica.bz.it/de/info'> Autonome Provinz Bozen </a>  (<a href ='https://creativecommons.org/publicdomain/zero/1.0/deed.it'> CC0</a>)",
 });
 
-myMap.addLayer(Glacierpts_SI);
-myMap.addLayer(GlacierfeatureGroup_SI);
-*/
+myMap.addLayer(Glacierpts_st);
+myMap.addLayer(GlacierfeatureGroup_st);
+
 //=======================================================================
 
 
@@ -167,7 +163,7 @@ const hash = new L.Hash(myMap);
 myMap.addControl( new L.Control.Search({
   layer: Glacierpts,
   initial: false,
-  propertyName: 'GLETSCHERN',    
+  propertyName: 'GLETSCHERN',
 }));
 
 // Baselayer control
@@ -181,10 +177,9 @@ let myMapControl  = L.control.layers({
   //overlay // Overlay controls zum unabhängigem Ein-/Ausschalten der Route und Marker hinzufügen
   "Gletscher Tirol Marker" : Glacierpts,
   "Gletscher Tirol Fläche" : Glacierpolygon,
-  "Gletscher Südtirol Marker" : Glacierpts_SI,
-  "Gletscher Südtirol Fläche" : Glacierpolygon_SI,
-  "Orthophoto Tiol & Südtirol" : gdi_orthoGrp,
-  "Gletscher Südtirol" : myLayers.gletscherinv_suedtirol,
+  "Gletscher Südtirol Marker" : Glacierpts_st,
+  "Gletscher Südtirol Fläche" : Glacierpolygon_st,
+  "Orthophoto Tirol & Südtirol" : gdi_orthoGrp,
 }, { //map control ausgeklappt lassen
   collapsed:false} );
 
