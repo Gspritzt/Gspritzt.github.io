@@ -106,10 +106,6 @@ const AllBorderGrp = L.layerGroup([TirolBorderGeojson, SuedtirolBorderGeojson]).
 
 
 
-
-
-
-
 // TODO: Please credit as follows: Maps Icons Collection https://mapicons.mapsmarker.com
 //===================Nordtirol==============
 const geojson = L.geoJSON(gi3_tirol_2006_points, {
