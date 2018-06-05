@@ -16,7 +16,10 @@
     <script src="js/leaflet/leaflet.js"></script>
     <!--LEAFLET-->
 
-    <script type="text/javascript" defer src="script.js"></script>
+    <!--leaflet.search-->
+    <link rel="stylesheet" href="js/leaflet.search/leaflet-search.min.css"/>
+    <script src="js/leaflet.search/leaflet-search.min.js"></script>
+    <!--leaflet.search-->
 
     <!--tab pic-->
     <link rel="icon" type="image/png" sizes="32x32" href="images/gspritzt.png">
@@ -32,10 +35,25 @@
     <script src="data/GI3_Tirol_2006_points.js"></script>
     <!--Geojson Data-->
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style_relationmap.css" />
+
+    <script type="text/javascript" defer src="script_relationmap.js"></script>
 
   </head>
   <body>
+    <div id="header">
+      <h2 class="white">Gletscher Tirols</h2>
+      <h3 class="white">Meltin!?</h3>
+    </div>
+
+    <div class="topnav">
+      <a href="index.html" style="float:left">Erklärung Gletscherrückgang</a>
+      <a href="Gspritzt_map.html">Übersichtskarte Gletscher Tirol</a>
+      <a href="relationmap.html" style="float:right">Orthophoto Vergleichskarte Vergangenheit / Jetzt</a>
+    </div>
+
+    <h2><em><strong>Orthophoto Vergleichskarte Vergangenheit / Jetzt</strong></em></h2>
+
     <div id='map1'></div>
 
     <div id="map1basemaps" class="basemaps-wrapper leaflet-bar">
@@ -45,36 +63,20 @@
           <option value="ortho_2004_2009">2004-2009</option>
           <option value="ortho_2009_2012">2009-2012</option>
           <option value="ortho_2013_2015">2013-2015</option>
-          <option value="ortho_aktuell_rgb" disabled>Aktuell<options>
       </select>
     </div>
 
     <div id='map2'></div>
 
-    <div id="map2basemaps" class="basemaps-wrapper leaflet-bar">
-      <!--<select name="basemaps">
-        <option value="ortho_aktuell_rgb" disabled>Aktuell</option>
-
-        <option value="ortho_1999_2004">1999-2004</option>
-        <option value="ortho_2004_2009">2004-2009</option>
-        <option value="ortho_2009_2012">2009-2012</option>
-        <option value="ortho_2013_2015">2013-2015</option>
-        <option value="ortho_aktuell_rgb">Aktuell<options>
-      </select>-->
     </div>
 
 
-
-    <hr />
-
-    <h2> Vergleichskarte</h2>
+    <p>Placeholder</p>
 
     <div id="footer" class="gray">
-      <a class="back" href="index.html">
-              <i class="fas fa-arrow-alt-circle-left"></i> Home</a>
-      <a class="next" href="Gspritzt_map.html"> Karte
-              <i class="fas fa-arrow-alt-circle-right"></i>
-          </a>
+      <p>placeholder footer</p>
+
+      <p>Headerbild: Blick vom Hinteren Eis auf den Hintereisferner (Foto von Johannes Branke)</p>
     </div>
 
   </body>
