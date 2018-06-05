@@ -2,10 +2,13 @@
 let startCenter = [47.267, 11.383];
 let minLatLng = [46.735686, 10.394005];
 let maxLatLng = [47.620789, 12.576880];
-let startZoom = 14;
+let startZoom = 10;
 let minZoom = 9;
 let layer1 = 'ortho_1970_1982';
 let layer2 = 'ortho_aktuell_rgb';
+
+
+let Glacierpts = L.markerClusterGroup();
 
 // define baselayers and insert further below, and also in index.html
 
@@ -110,17 +113,44 @@ let map2 = L.map('map2', {
     //maxBounds: [minLatLng,maxLatLng]
 });
 
-/* // TODO:
-// customize link to view source code; add your own GitHub repository
-map1.attributionControl
-.setPrefix('View <a href="http://github.com/jackdougherty/leaflet-map-sync" target="_blank">code on GitHub</a>');
-map2.attributionControl
-.setPrefix('');
 
-*/
 // Reposition zoom control other than default topleft
 L.control.zoom({position: "topright"}).addTo(map1);
 L.control.zoom({position: "topright"}).addTo(map2);
+
+
+
+
+//===================Nordtirol==============
+const geojson = L.geoJSON(gi3_tirol_2006_points, {
+  style: function(feature) {
+    return {color: "#ff0000"};
+  },
+  pointToLayer: function(geoJsonPoint, latlng) {
+    return L.marker(latlng, {icon: L.icon({
+      iconUrl: 'icons/pinother.png',
+      iconAnchor : [16,37],
+      popupAnchor : [0,-37],
+    })
+    });
+  }
+}).addTo(Glacierpts);
+Glacierpts.addLayer(geojson);
+Glacierpts.bindPopup(function(layer) {
+  const props = layer.feature.properties;
+  const popupText = `<h1>${props.GLETSCHERN}</h1>`;
+  return popupText;
+});
+
+
+let GlacierfeatureGroup =  L.layerGroup([Glacierpts], {
+  attribution : "Gletscherdaten: <a href ='https://doi.pangaea.de/10.1594/PANGAEA.806960'> Abermann et al. (2012) </a> (<a href ='https://creativecommons.org/licenses/by/3.0/'> CC BY 3.0 </a>)",
+});
+
+//myMap.addLayer(Glacierpts);
+//map1.addLayer(GlacierfeatureGroup);
+map2.addLayer(GlacierfeatureGroup);
+
 
 // Maßstab metrisch ohne inch
 //Maßstabsleiste

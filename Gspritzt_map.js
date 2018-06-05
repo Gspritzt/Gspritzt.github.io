@@ -16,6 +16,7 @@ let Glacierpolygon = L.featureGroup();
 let Glacierpts_st = L.markerClusterGroup();
 let Glacierpolygon_st = L.featureGroup();
 
+
 //make selectable maps and overlays
 let myLayers = {
   osm : L.tileLayer(
@@ -78,6 +79,25 @@ let myScale = L.control.scale({
 });
 
 myScale.addTo(myMap);
+
+
+
+//===================Border==============
+let TirolBorderGeojson = L.geoJSON(suedtirol_border, {
+  style: function(feature) {
+    return {color: "#de2d26"}; //http://colorbrewer2.org/#type=sequential&scheme=Reds&n=3
+  }});
+let SuedtirolBorderGeojson = L.geoJSON(tirol_border, {
+  style: function(feature) {
+    return {color: "#de2d26"};
+  }});
+
+const AllBorderGrp = L.layerGroup([TirolBorderGeojson, SuedtirolBorderGeojson]).addTo(myMap);
+
+
+
+
+
 
 
 // TODO: Please credit as follows: Maps Icons Collection https://mapicons.mapsmarker.com
