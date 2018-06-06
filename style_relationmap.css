@@ -1,3 +1,9 @@
+/*
+*
+* CSS styles for the gspritzt project
+*
+*/
+
 html, body {
   /*width: 100%;*/
   max-width: 1280px;
@@ -30,14 +36,20 @@ html, body {
 }
 
 /* Style the top navigation bar */
-.topnav {
-    overflow: hidden;
+.topnav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;;
     background-color: #6E6E6E;
 }
 
 /* Style the topnav links */
-.topnav a {
-    float: left;
+.topnav li {
+  float: left;
+}
+
+.topnav li a {
     display: block;
     color: #f2f2f2;
     text-align: center;
@@ -46,12 +58,15 @@ html, body {
 }
 
 /* Change color on hover */
-.topnav a:hover {
+.topnav li a:hover:not(.active) {
     background-color: #ddd;
     color: black;
 }
 
-
+/* show color on active link */
+.active {
+    background-color: #3182bd; /*http://colorbrewer2.org/#type=sequential&scheme=Blues&n=3*/
+}
 
 #map1, #map2 {
   width: 49.5%;
