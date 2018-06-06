@@ -18,7 +18,7 @@ let ortho_1970_1982 = L.tileLayer.wms(
     attribution : "Datenquelle: <a href ='https://www.tirol.gv.at/data/nutzungsbedingungen/'> Land Tirol - data.tirol.gv.at </a>",
     transparent: true,
     format: 'image/png',
-    pane: "overlayPane",
+    //pane: "overlayPane",
   }
 )
 
@@ -28,7 +28,7 @@ let ortho_1999_2004 = L.tileLayer.wms(
     attribution : "Datenquelle: <a href ='https://www.tirol.gv.at/data/nutzungsbedingungen/'> Land Tirol - data.tirol.gv.at </a>",
     transparent: true,
     format: 'image/png',
-    pane: "overlayPane",
+    //pane: "overlayPane",
   }
 )
 
@@ -38,7 +38,7 @@ let ortho_2004_2009 = L.tileLayer.wms(
     attribution : "Datenquelle: <a href ='https://www.tirol.gv.at/data/nutzungsbedingungen/'> Land Tirol - data.tirol.gv.at </a>",
     transparent: true,
     format: 'image/png',
-    pane: "overlayPane",
+    //pane: "overlayPane",
   }
 )
 
@@ -48,7 +48,7 @@ let ortho_2009_2012 = L.tileLayer.wms(
     attribution : "Datenquelle: <a href ='https://www.tirol.gv.at/data/nutzungsbedingungen/'> Land Tirol - data.tirol.gv.at </a>",
     transparent: true,
     format: 'image/png',
-    pane: "overlayPane",
+    //pane: "overlayPane",
   }
 )
 
@@ -58,7 +58,7 @@ let ortho_2013_2015 = L.tileLayer.wms(
     attribution : "Datenquelle: <a href ='https://www.tirol.gv.at/data/nutzungsbedingungen/'> Land Tirol - data.tirol.gv.at </a>",
     transparent: true,
     format: 'image/png',
-    pane: "overlayPane",
+    //pane: "overlayPane",
   }
 )
 
@@ -68,7 +68,7 @@ let ortho_aktuell_rgb = L.tileLayer.wms(
     attribution : "Datenquelle: <a href ='https://www.tirol.gv.at/data/nutzungsbedingungen/'> Land Tirol - data.tirol.gv.at </a>",
     transparent: true,
     format: 'image/png',
-    pane: "overlayPane",
+    //pane: "overlayPane",
   }
 )
 
@@ -255,30 +255,4 @@ function clearAllLayers(){
     default:
       break;
   }
-}
-
-// Set up to create permalink
-$(document).ready(function() {
-  $('#map1basemaps select').change(function() {
-    changeBasemap('map1', $(this).val());
-  });
-
-  $('#map2basemaps select').change(function() {
-    changeBasemap('map2', $(this).val());
-  });
-
-  // Generate permalink on click
-  $('#permalink').click(function() {
-    let zoom = map1._zoom;
-    let lat = map1.getCenter().lat;
-    let lng = map1.getCenter().lng;
-    let layer1 = $('#map1basemaps select').val();
-    let layer2 = $('#map2basemaps select').val();
-    let href = '#zoom=' + zoom + '&lat=' + lat + '&lng=' +
-                  lng + '&layer1=' + layer1 + '&layer2=' + layer2;
-    // Update URL in browser
-    window.location.hash = href;
-    window.prompt("Copy with Cmd+C (Mac) or Ctrl+C", window.location.href);
-  });
-
-});
+};

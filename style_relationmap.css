@@ -52,6 +52,7 @@ html, body {
 }
 
 
+
 #map1, #map2 {
   width: 49.5%;
   height: 100%;
@@ -69,7 +70,9 @@ html, body {
 
 #map1basemaps {
   /*position: relative;*/
-   left: 325px; } /* absolute pixels from left side 325px*/
+   left: 325px;
+   z-index: 1000;
+} /* absolute pixels from left side 325px*/
 
 
 /* #####################################*/
