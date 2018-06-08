@@ -157,6 +157,24 @@ let myScale = L.control.scale({
 
 myScale.addTo(map1);
 
+//################Map1 Legend###########################
+// Create Leaflet Control Object for Legend
+let legend_drop = L.control({position: 'topleft'});
+
+// Function that runs when legend is added to map
+legend_drop.onAdd = function (map) {
+
+	// Create Div Element and Populate it with HTML
+	let map1basemaps = L.DomUtil.create('map1basemaps', 'legend_drop');
+	map1basemaps.innerHTML += '<select name="basemaps"><option value="ortho_1970_1982">1970-1982</option><option value="ortho_1999_2004">1999-2004</option><option value="ortho_2004_2009">2004-2009</option><option value="ortho_2009_2012">2009-2012</option><option value="ortho_2013_2015">2013-2015</option></select>';
+
+	// Return the Legend div containing the HTML content
+	return map1basemaps;
+};
+
+// Add Legend to Map
+legend_drop.addTo(map1);
+
 //################Map2 Legend###########################
 // Create Leaflet Control Object for Legend
 let legend = L.control({position: 'topleft'});
@@ -165,7 +183,7 @@ let legend = L.control({position: 'topleft'});
 legend.onAdd = function (map) {
 
 	// Create Div Element and Populate it with HTML
-	var div = L.DomUtil.create('div', 'legend');
+	let div = L.DomUtil.create('div', 'legend');
 	div.innerHTML += '<strong>Orthophoto Aktuell (2016)</strong>';
 
 	// Return the Legend div containing the HTML content
@@ -245,7 +263,7 @@ function clearAllLayers(){
 
 // combine map1basemap select with changeBasemap function
 $(document).ready(function() {
-  $('#map1basemaps select').change(function() {
+  $('map1basemaps select').change(function() {
     changeBasemap('map1', $(this).val());
   });
 });
