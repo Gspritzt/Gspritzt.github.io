@@ -256,3 +256,10 @@ function clearAllLayers(){
       break;
   }
 };
+
+// combine map1basemap select with changeBasemap function
+$(document).ready(function() {
+  $('#map1basemaps select').change(function() {
+    changeBasemap('map1', $(this).val());
+  });
+});
