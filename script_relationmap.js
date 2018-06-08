@@ -7,7 +7,6 @@ let minZoom = 9;
 let layer1 = 'ortho_1970_1982';
 let layer2 = 'ortho_aktuell_rgb';
 
-
 let Glacierpts = L.markerClusterGroup();
 
 // define baselayers and insert further below, and also in index.html
@@ -113,12 +112,9 @@ let map2 = L.map('map2', {
     //maxBounds: [minLatLng,maxLatLng]
 });
 
-
 // Reposition zoom control other than default topleft
 L.control.zoom({position: "topright"}).addTo(map1);
 L.control.zoom({position: "topright"}).addTo(map2);
-
-
 
 
 //===================Nordtirol==============
@@ -142,7 +138,6 @@ Glacierpts.bindPopup(function(layer) {
   return popupText;
 });
 
-
 let GlacierfeatureGroup =  L.layerGroup([Glacierpts], {
   attribution : "Gletscherdaten: <a href ='https://doi.pangaea.de/10.1594/PANGAEA.806960'> Abermann et al. (2012) </a> (<a href ='https://creativecommons.org/licenses/by/3.0/'> CC BY 3.0 </a>)",
 });
@@ -150,7 +145,6 @@ let GlacierfeatureGroup =  L.layerGroup([Glacierpts], {
 //myMap.addLayer(Glacierpts);
 //map1.addLayer(GlacierfeatureGroup);
 map2.addLayer(GlacierfeatureGroup);
-
 
 // Maßstab metrisch ohne inch
 //Maßstabsleiste
@@ -163,9 +157,7 @@ let myScale = L.control.scale({
 
 myScale.addTo(map2);
 
-
 //################Map2 Legend###########################
-
 // Create Leaflet Control Object for Legend
 let legend = L.control({position: 'topleft'});
 
@@ -213,13 +205,7 @@ function sync(map, e) {
 }
 
 function changeBasemap(map, basemap) {
-  let other_map = (map === 'map1') ? 'map2' : 'map1';
-  let mAp = (map === 'map1') ? map1 : map2; // TODO:  changed map to mAp because redeclaration
-
-  // Disable selected layer on the neighbor map
-  // (if two maps load the same layer, weird behavior observed)
-  $('#' + other_map + 'basemaps option').removeAttr('disabled');
-  $('#' + other_map + 'basemaps option[value="' + basemap + '"]').attr('disabled', 'disabled');
+  let mAp = map1
 
 // function that removes loaded layers
 function clearAllLayers(){
