@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Gspritzt Projekt Webmapping 2018! - Vergleichskarte</title>
+    <title>Gspritzt Projekt Webmapping 2018! - Vergleichskarte Südtirol</title>
 
     <!--FONTS-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -31,13 +31,13 @@
     <script src="js/leaflet.markercluster/leaflet.markercluster.js"></script>
     <!--leaflet.markerCluster-->
 
-    <!--Geojson Data Tirol-->
-    <script src="data/GI3_Tirol_2006_points.js"></script>
+    <!--Geojson Data StTirol-->
+    <script src="data/GlacierInventory_2006_suedtirol_points.js"></script>
     <!--Geojson Data-->
 
-    <link rel="stylesheet" href="style_relationmap.css" />
+    <link rel="stylesheet" href="style_relationmap_st.css" />
 
-    <script type="text/javascript" defer src="script_relationmap.js"></script>
+    <script type="text/javascript" defer src="script_relationmap_st.js"></script>
 
   </head>
   <body>
@@ -50,8 +50,8 @@
       <ul>
         <li><a href="index.html" style="float:left">Erklärung Gletscherrückgang</a></li>
         <li><a href="Gspritzt_map.html">Übersichtskarte Gletscher Tirol</a></li>
-        <li><a href="relationmap.html" class="active">Orthophoto Vergleichskarte Nordtirol</a></li>
-        <li><a href="relationmap_st.html">Orthophoto Vergleichskarte Südtirol</a></li>
+        <li><a href="relationmap.html">Orthophoto Vergleichskarte Nordtirol</a></li>
+        <li><a href="relationmap_st.html" class="active">Orthophoto Vergleichskarte Südtirol</a></li>
       </ul>
     </div>
 
@@ -61,11 +61,12 @@
 
     <div id="map1basemaps" class="basemaps-wrapper leaflet-bar">
       <select name="basemaps">
-          <option value="ortho_1970_1982">1970-1982</option>
-          <option value="ortho_1999_2004">1999-2004</option>
-          <option value="ortho_2004_2009">2004-2009</option>
-          <option value="ortho_2009_2012">2009-2012</option>
-          <option value="ortho_2013_2015">2013-2015</option>
+          <option value="ortho_1992-1997">1992-1997</option>
+          <option value="ortho_2000">2000</option>
+          <option value="ortho_2003">2003</option>
+          <option value="ortho_2006">2006</option>
+          <option value="ortho_2008">2008</option>
+          <option value="ortho_2011">2011</option>
       </select>
     </div>
 

@@ -1,0 +1,154 @@
+/*
+*
+* CSS styles for the gspritzt project
+*
+*/
+
+html, body {
+  /*width: 100%;*/
+  max-width: 1280px;
+  height: 95%;
+  /*margin: 0;*/
+  margin: auto;
+  font-family: "Open Sans"; /* Source: https://fonts.google.com/specimen/Open+Sans */
+}
+
+
+#header {
+    text-align: center;
+    background-color: dodgerblue;
+    background-image: url('images/hef.jpg');
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;
+    background-position: 312px -100px; */
+    height: 360px;
+}
+#header h2 {
+    font-size: 4em;
+    padding: 1em 0;
+    margin: 0;
+    text-shadow: 2px 2px 4px #000000;
+}
+#header h3 {
+    font-size: 2em;
+    margin: 0;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+/* Style the top navigation bar */
+.topnav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;;
+    background-color: #6E6E6E;
+}
+
+/* Style the topnav links */
+.topnav li {
+  float: left;
+}
+
+.topnav li a {
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav li a:hover:not(.active) {
+    background-color: #ddd;
+    color: black;
+}
+
+/* show color on active link */
+.active {
+    background-color: #3182bd; /*http://colorbrewer2.org/#type=sequential&scheme=Blues&n=3*/
+}
+
+#map1, #map2 {
+  width: 49.5%;
+  height: 100%;
+}
+
+#map1 { float: left; }
+#map2 { float: right; }
+
+.basemaps-wrapper {
+    position: absolute;
+    top: 495px; /* absolute pixels from top */
+    left: 10px; /
+    z-index: 1000;
+}
+
+#map1basemaps {
+  /*position: relative;*/
+   left: 325px;
+   z-index: 1000;
+} /* absolute pixels from left side 325px*/
+
+
+/* #####################################*/
+
+.legend {
+	line-height: 18px;
+	color: #333333;
+	font-family: 'Open Sans';
+	padding: 6px 8px;
+	background: white;
+	background: rgba(255,255,255,0.8);
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	border-radius: 5px;
+}
+
+.legend i {
+	width: 18px;
+	height: 18px;
+	float: left;
+	margin-right: 8px;
+	opacity: 0.7;
+}
+
+.legend img {
+	width: 18px;
+	height: 18px;
+	float: left;
+}
+
+.legend p {
+	font-size: 12px;
+	line-height: 18px;
+	margin: 0;
+}
+
+/* #####################################*/
+
+#header h2 {
+    font-size: 4em;
+    padding: 1em 0;
+    margin: 0;
+    text-shadow: 2px 2px 4px #000000;
+}
+#header h3 {
+    font-size: 2em;
+    margin: 0;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+#footer {
+    width: 100%;
+    padding: 1em 0 3em 0;
+    font-size: 0.75em;
+}
+
+a:link, a:visited {
+    color: black;
+}
+.gray, .gray a:link, .gray a:visited {
+    color: gray;
+}
+.white, .white a:link, .white a:visited {
+    color: white;
+}
