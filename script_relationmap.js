@@ -155,7 +155,7 @@ let myScale = L.control.scale({
   metric : true
 });
 
-myScale.addTo(map2);
+myScale.addTo(map1);
 
 //################Map2 Legend###########################
 // Create Leaflet Control Object for Legend
