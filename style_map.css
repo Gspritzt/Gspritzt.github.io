@@ -68,6 +68,19 @@ body {
     border: 1px solid gray;
 }
 
+.article figure  {
+    padding: 10px; /* if you want space between the images */
+}
+
+.article figure figcaption  {
+    margin-left: -12em;
+    width: 11.5em;
+    font-size: 0.8em;
+    float: left;
+    /*width: 33.33%; *//* three containers (use 25% for four, and 50% for two, etc) */
+    padding: 10px; /* if you want space between the images */
+}
+
 #footer {
     width: 100%;
     padding: 1em 0 3em 0;
