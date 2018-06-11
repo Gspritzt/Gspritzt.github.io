@@ -1,0 +1,79 @@
+/*
+*
+* CSS styles for the gspritzt project
+*
+*/
+
+body {
+    max-width: 1280px;
+    margin: auto;
+    font-family: "Open Sans"; /* Source: https://fonts.google.com/specimen/Open+Sans */
+}
+
+#header {
+    text-align: center;
+    background-color: dodgerblue;
+    background-image: url('images/glacier.jpg');
+    background-repeat: no-repeat;
+    height: 360px;
+}
+#header h2 {
+    font-size: 4em;
+    padding: 1em 0;
+    margin: 0;
+    text-shadow: 2px 2px 4px #000000;
+}
+#header h3 {
+    font-size: 2em;
+    margin: 0;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+/* Style the top navigation bar */
+.topnav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;;
+    background-color: #6E6E6E;
+}
+
+/* Style the topnav links */
+.topnav li {
+  float: left;
+}
+
+.topnav li a {
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav li a:hover:not(.active) {
+    background-color: #ddd;
+    color: black;
+}
+
+/* show color on active link */
+.active {
+    background-color: #3182bd; /*http://colorbrewer2.org/#type=sequential&scheme=Blues&n=3*/
+}
+
+#footer {
+    width: 100%;
+    padding: 1em 0 3em 0;
+    font-size: 0.75em;
+}
+
+a:link, a:visited {
+    color: black;
+}
+.gray, .gray a:link, .gray a:visited {
+    color: gray;
+}
+.white, .white a:link, .white a:visited {
+    color: white;
+}
