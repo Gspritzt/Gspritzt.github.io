@@ -1,11 +1,7 @@
 // set initial center point, zoom, and layers
 let startCenter = [46.49926,11.35661];
-//let minLatLng = [46.735686, 10.394005];
-//let maxLatLng = [47.620789, 12.576880];
 let startZoom = 10;
 let minZoom = 9;
-let layer1 = 'ortho_1992_1997';
-let layer2 = 'ortho_aktuell_rgb';
 
 let Glacierpts = L.markerClusterGroup();
 
@@ -81,31 +77,9 @@ let ortho_aktuell_rgb = L.tileLayer.wms(
   }
 )
 
-// Insert basemap letiables; return layer named s
-function pickLayer(s) {
-  switch (s) {
-    case 'ortho_1992_1997':
-      return ortho_1992_1997;
-    case 'ortho_2000':
-      return ortho_2000;
-    case 'ortho_2003':
-      return ortho_2003;
-    case 'ortho_2006':
-      return ortho_2006;
-    case 'ortho_2008':
-      return ortho_2008;
-    case 'ortho_2011':
-      return ortho_2011;
-    case 'ortho_aktuell_rgb':
-      return ortho_aktuell_rgb;
-    default:
-      return ortho_1992_1997;
-  }
-}
-
 // Create two maps
 let map1 = L.map('map1', {
-    layers: pickLayer(layer1),
+    layers: ortho_1992_1997,
     center: startCenter,
     zoom: startZoom,
     zoomControl: false,
@@ -115,7 +89,7 @@ let map1 = L.map('map1', {
 });
 
 let map2 = L.map('map2', {
-    layers: pickLayer(layer2),
+    layers: ortho_aktuell_rgb,
     center: startCenter,
     zoom: startZoom,
     minZoom: minZoom,
