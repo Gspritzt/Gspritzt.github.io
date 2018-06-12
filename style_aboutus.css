@@ -57,11 +57,22 @@ body {
     color: black;
 }
 
+
 /* show color on active link */
 .active {
     background-color: #3182bd; /*http://colorbrewer2.org/#type=sequential&scheme=Blues&n=3*/
 }
 
+.kollektiv img {
+    position: relative;
+    width: 50%;
+} 
+
+.prof img {
+    display: table-cell;
+    padding: 0 4px;
+    text-align: center;
+    }
 
 #footer {
     width: 100%;
