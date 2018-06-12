@@ -48,7 +48,7 @@ let myLayers = {
       pane: "overlayPane",
     }
   ),
- 
+
   gdi_nomenklatur: L.tileLayer(
     "http://wmts.kartetirol.at/wmts/gdi_nomenklatur/GoogleMapsCompatible/{z}/{x}/{y}.png8", {
       attribution : "Datenquelle: <a href ='https://www.tirol.gv.at/data/nutzungsbedingungen/'> Land Tirol - data.tirol.gv.at </a>",
@@ -119,9 +119,11 @@ Glacierpts.addLayer(geojson);
 myMap.fitBounds(Glacierpts.getBounds());
 Glacierpts.bindPopup(function(layer) {
   const props = layer.feature.properties;
-  const Area = (props.Shape_Area/100000).toFixed(2)
+  const Area2k6 = (props.Shape_Area/100000).toFixed(2)
+  const Area1998 = (props.area1998/100000).toFixed(2)
+  const Area1969 = (props.area1969/100000).toFixed(2)
   const popupText = `<h1>${props.GLETSCHERN}</h1>
-  <p> Fläche 2006:  ${Area} km²</p>`;
+  <p> Fläche 1969:  ${Area1969} km²</p><p> Fläche 1998:  ${Area1998} km²</p><p> Fläche 2006:  ${Area2k6} km²</p>`;
   return popupText;
 });
 
