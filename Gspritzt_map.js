@@ -48,13 +48,7 @@ let myLayers = {
       pane: "overlayPane",
     }
   ),
-  /*gdi_ortho : L.tileLayer(
-    "http://wmts.kartetirol.at/wmts/gdi_ortho/GoogleMapsCompatible/{z}/{x}/{y}.jpeg80", {
-      attribution : "Datenquelle: <a href ='https://www.tirol.gv.at/data/nutzungsbedingungen/'> Land Tirol - data.tirol.gv.at </a>",
-      transparent: true,
-      format: 'image/png',
-    }
-  ),*/
+ 
   gdi_nomenklatur: L.tileLayer(
     "http://wmts.kartetirol.at/wmts/gdi_nomenklatur/GoogleMapsCompatible/{z}/{x}/{y}.png8", {
       attribution : "Datenquelle: <a href ='https://www.tirol.gv.at/data/nutzungsbedingungen/'> Land Tirol - data.tirol.gv.at </a>",
@@ -144,7 +138,7 @@ myMap.addLayer(GlacierfeatureGroup);
 
 
 
-//=================Suedtirol Test===========================================
+//=================Suedtirol===========================================
 const geojson_st = L.geoJSON(gi_2006_st_points, {
   style: function(feature) {
     return {color: "#7fcdbb"};
@@ -181,7 +175,7 @@ let GlacierfeatureGroup_st =  L.layerGroup([Glacierpts_st,Glacierpolygon_st], {
 
 myMap.addLayer(Glacierpts_st);
 myMap.addLayer(GlacierfeatureGroup_st);
-
+//============================================================================
 
 // Baselayer control
 let myMapControl  = L.control.layers({
