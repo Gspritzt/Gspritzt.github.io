@@ -25,6 +25,7 @@ Das Projekt hat das Ziel im Bezug auf den Gletscherrückgang im Alpenraum (bzw. 
 
 - Eingebundene Basemaps: OpenStreetMap [https://www.openstreetmap.org/] (CC BY-SA), OpenTopoMap [https://opentopomap.org/] (CC-BY-SA), GeolandBaseMap [https://www.basemap.at/wmts/1.0.0/WMTSCapabilities.xml] (CC-BY-3.0)
 - Bundeslandsgrenzen Tirol [https://www.data.gv.at/katalog/dataset/8d824fec-2ea2-47a2-9443-674173343722] (CC-BY-3.0) & Grenzen der Autonomen Provinz Bozen [http://daten.buergernetz.bz.it/de] (CC0)
+- Gletscher Inventar 1+2 1969, 1998 Department of Atmospheric and Cryospheric Sciences, University of Innsbruck [http://acinn.uibk.ac.at/research/ice-and-climate/projects/agi] vgl. Fischer et al. 2015 [https://doi.pangaea.de/10.1594/PANGAEA.844988] (CC-BY)
 - Gletscher Inventar 3 2006 Abermann et al. 2012 [https://doi.pangaea.de/10.1594/PANGAEA.806960] (CC-BY)
 - Orthophotos WMS Server Land Tirol [1970-1982, 1999-2004, 2004-2009, 2009-2012,2012-2015, Aktuell] [https://www.data.gv.at/katalog/dataset/land-tirol_orthofototirol] (CC-BY-3.0)
 - Gletscher Inventar 2006 für Südtirol [http://daten.buergernetz.bz.it/de/dataset/idrologia-catasto-dei-ghiacciai-2006] (CC0)
