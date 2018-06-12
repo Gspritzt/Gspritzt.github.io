@@ -63,16 +63,17 @@ body {
     background-color: #3182bd; /*http://colorbrewer2.org/#type=sequential&scheme=Blues&n=3*/
 }
 
-.kollektiv img {
-    position: relative;
-    width: 50%;
-} 
 
-.prof img {
-    display: table-cell;
-    padding: 0 4px;
-    text-align: center;
-    }
+tr:nth-child(even) {
+    text-align: left;
+}
+    
+
+th, td {
+    padding: 1em;
+    text-align: left;
+    /*background-color: #4CAF50;*/
+}
 
 #footer {
     width: 100%;
