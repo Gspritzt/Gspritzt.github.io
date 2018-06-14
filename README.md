@@ -12,6 +12,7 @@ Das Projekt hat das Ziel im Bezug auf den Gletscherrückgang im Alpenraum (bzw. 
 - Übersichtskarte und vertiefende Informationen [HTML, CSS, JS]
 - Split Screen Karte zum Betrachten der Orthophotos des Landes Tirol über unterschiedliche Zeiträume [HTML, CSS, JS]
 - Split Screen Karte zum Betrachten der Orthophotos der Autonomen Provinz Bozen (Südtirol) über unterschiedliche Zeiträume [HTML, CSS, JS]
+- Über Uns [HTML, CSS]
 
 ## Verwendete Leaflet-Plugins & JS Erweiterungen
 
@@ -19,6 +20,8 @@ Das Projekt hat das Ziel im Bezug auf den Gletscherrückgang im Alpenraum (bzw. 
 - Leaflet.FullScreen [https://github.com/Leaflet/Leaflet.fullscreen] (ISC License)
 - Leaflet-Hash [https://github.com/mlevans/leaflet-hash] (MIT License)
 - Leaflet.Markercluster  [https://github.com/Leaflet/Leaflet.markercluster] (MIT License)
+- TopoJSON [https://github.com/topojson/topojson] (Copyright (c) 2012-2016, Michael Bostock All rights reserved.)
+- L.TopoJSON [https://gist.github.com/brendanvinson/0e3c3c86d96863f1c33f55454705bca7] (The MIT License (MIT) Copyright (c) 2016 Brendan Vinson)
 - jQuery [https://jquery.com] (MIT License)
 
 ## Verwendete Daten

@@ -256,3 +256,7 @@ $(document).ready(function() {
     changeBasemap('map1', $(this).val());
   });
 });
+
+//=======================================================================
+
+const hash = new L.Hash(map1);

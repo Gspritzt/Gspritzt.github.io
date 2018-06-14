@@ -16,7 +16,6 @@ let Glacierpolygon = L.featureGroup();
 let Glacierpts_st = L.markerClusterGroup();
 let Glacierpolygon_st = L.featureGroup();
 
-
 //make selectable maps and overlays
 let myLayers = {
   osm : L.tileLayer(
@@ -87,11 +86,11 @@ myScale.addTo(myMap);
 
 
 //===================Border==============
-let TirolBorderGeojson = L.geoJSON(suedtirol_border, {
+let TirolBorderGeojson = L.topoJson(tirol_border, {
   style: function(feature) {
     return {color: "#de2d26"}; //http://colorbrewer2.org/#type=sequential&scheme=Reds&n=3
   }});
-let SuedtirolBorderGeojson = L.geoJSON(tirol_border, {
+let SuedtirolBorderGeojson = L.geoJSON(suedtirol_border, {
   style: function(feature) {
     return {color: "#de2d26"};
   }});
@@ -127,8 +126,8 @@ Glacierpts.bindPopup(function(layer) {
   return popupText;
 });
 
-let geojson2 = L.geoJSON(gi3_tirol_2006_polygon).addTo(Glacierpolygon)
-let geojson2_layers = geojson2.getLayers();
+let geojson2 = L.topoJson(gi3_tirol_2006_polygon).addTo(Glacierpolygon)
+//let geojson2_layers = geojson2.getLayers();
 
 
 let GlacierfeatureGroup =  L.layerGroup([Glacierpts,Glacierpolygon], {
@@ -166,9 +165,8 @@ Glacierpts_st.bindPopup(function(layer) {
 }
 );
 
-let geojson_st_2 = L.geoJSON(gi_2006_st_polygon).addTo(Glacierpolygon_st)
-
-let geojson_st_2_layers = geojson_st_2.getLayers();
+let geojson_st_2 = L.topoJson(gi_2006_st_polygon).addTo(Glacierpolygon_st)
+//let geojson_st_2_layers = geojson_st_2.getLayers();
 
 
 let GlacierfeatureGroup_st =  L.layerGroup([Glacierpts_st,Glacierpolygon_st], {
