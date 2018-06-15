@@ -126,7 +126,9 @@ Glacierpts.bindPopup(function(layer) {
   return popupText;
 });
 
-let geojson2 = L.topoJson(gi3_tirol_2006_polygon).addTo(Glacierpolygon)
+topology_tirol_polys = topojson.presimplify(gi3_tirol_2006_polygon)
+topology_tirol_polys = topojson.simplify(topology_tirol_polys)
+let geojson2 = L.topoJson(topology_tirol_polys).addTo(Glacierpolygon)
 //let geojson2_layers = geojson2.getLayers();
 
 
@@ -165,7 +167,9 @@ Glacierpts_st.bindPopup(function(layer) {
 }
 );
 
-let geojson_st_2 = L.topoJson(gi_2006_st_polygon).addTo(Glacierpolygon_st)
+topology_st_tirol_polys = topojson.presimplify(gi_2006_st_polygon)
+topology_st_tirol_polys = topojson.simplify(topology_st_tirol_polys)
+let geojson_st_2 = L.topoJson(topology_st_tirol_polys).addTo(Glacierpolygon_st)
 //let geojson_st_2_layers = geojson_st_2.getLayers();
 
 
